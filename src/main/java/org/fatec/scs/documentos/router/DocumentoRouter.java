@@ -4,7 +4,8 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 import static org.springframework.web.reactive.function.server.ServerResponse.ok;
 
 import org.fatec.scs.documentos.dto.DocumentoDTO;
-import org.fatec.scs.documentos.model.Documento;
+import org.fatec.scs.documentos.dto.PastaDTO;
+import org.fatec.scs.documentos.model.Pasta;
 import org.fatec.scs.documentos.service.DocumentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -26,7 +27,12 @@ public class DocumentoRouter {
 		.POST("/documento", req -> 
 			ok().body(req.bodyToMono(DocumentoDTO.class).flatMap(dto -> 
 			documentoService.salvarDocumento(dto)),
-			Documento.class
+			Pasta.class
+		))
+		.POST("/pasta", req ->
+			ok().body(req.bodyToMono(PastaDTO.class).flatMap(dto ->
+			documentoService.criaNovaPasta(dto)),
+			Pasta.class
 		))
 		.GET("/teste", req -> ok().body(Mono.just("API funcionando"), String.class))
 		.build();
