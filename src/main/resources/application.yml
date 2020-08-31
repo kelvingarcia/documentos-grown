@@ -1,1 +1,1 @@
-spring:  codec:    max-in-memory-size: 15MB      
+spring:  data:    mongodb:      uri: mongodb+srv://kelvingarcia:teste@kelvingarcia-sqn7o.mongodb.net/documentosgrown?retryWrites=true&w=majority  codec:    max-in-memory-size: 15MB      
